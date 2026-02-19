@@ -15,7 +15,6 @@ const Header = () => {
         <span className="logo-text">israel.dev</span>
       </div>
 
-      {/* NAVIGATION */}
       <nav className={`nav ${menuOpen ? "active" : ""}`}>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
@@ -24,7 +23,7 @@ const Header = () => {
         <a href="/resume.pdf" className="resume-btn">Resume</a>
       </nav>
 
-      {/* HAMBURGER */}
+     
       <div className="hamburger" onClick={toggleMenu}>
         <span className={menuOpen ? "bar open" : "bar"}></span>
         <span className={menuOpen ? "bar open" : "bar"}></span>

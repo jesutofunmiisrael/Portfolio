@@ -52,11 +52,11 @@ const Dashboard = () => {
           I build accessible, pixel-perfect, and performant web experiences.
           Bridging the gap between design and engineering with clean code.
         </p>
-        <button>View Projects</button>
+        <button >View Projects</button>
       </div>
 
 
-      <section className="about">
+      <section className="about" id="about">
         <h2>About Me</h2>
         <div className="about-content">
           <div className="about-text">
@@ -80,7 +80,7 @@ const Dashboard = () => {
       </section>
 
  
-      <section className="skills">
+      <section className="skills" id="skills">
         <h2>Technical Arsenal</h2>
         <p>
           I've worked with a range of technologies in the web development world. From back-end to front-end, here's my current tech stack.
@@ -124,7 +124,7 @@ const Dashboard = () => {
       </section>
 
   
-      <section className="projects">
+      <section className="projects" id="projects">
         <h2>Featured Projects</h2>
         <p>A selection of things I've built. Some for fun, some for clients, all with love.</p>
         <div className="projects-grid">
