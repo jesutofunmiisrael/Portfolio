@@ -215,6 +215,10 @@ const Dashboard = () => {
                 LinkedIn
               </a>
               <a href="mailto:jesutofunmiisrael30@gmail.com">Email</a>
+              
+<a href="https://wa.me/2347087136825" target="_blank">
+  WhatsApp
+</a>
             </div>
           </div>
         </div>
