@@ -9,7 +9,7 @@ import profilePic from "../assets/Profile.jpg.jpeg";
 import aiprofilepic from "../assets/ai.jpg.jpeg";
 import bankpic from "../assets/bank.jpg.jpeg";
 import javapic from "../assets/java.jpg.jpeg";
-import "./dashboard.css";
+import "./temp.css";
 
 const Dashboard = () => {
   const form = useRef();
