@@ -9,7 +9,6 @@ const Header = () => {
   return (
     <header className="header">
 
-      {/* LEFT SIDE - LOGO */}
       <div className="logo">
         <span className="logo-icon">&gt;_</span>
         <span className="logo-text">israel.dev</span>
@@ -35,3 +34,8 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
+
+
