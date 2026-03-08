@@ -1,112 +1,8 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 1.2rem 4rem;
-  background: #f9f9f9;
-  border-bottom: 1px solid #e5e5e5;
-
-  z-index: 1000;
-}
-
-/* LOGO */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-}
-
-.logo-icon {
-  background: #1e90ff;
-  color: white;
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-}
-
-.logo-text {
-  font-family: monospace;
-}
-
-/* NAV */
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.nav a {
-  text-decoration: none;
-  color: #444;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.nav a:hover {
-  color: #1e90ff;
-}
-
-/* Resume Button */
-.resume-btn {
-  background: #1e90ff;
-  color: white !important;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
-}
-
-/* HAMBURGER */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.bar {
-  width: 25px;
-  height: 3px;
-  background: #333;
-  transition: 0.3s;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-
-  .nav {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    flex-direction: column;
-    background: white;
-    width: 100%;
-    padding: 2rem;
-    display: none;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  }
-
-  .nav.active {
-    display: flex;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-} */
-
 
 /* HEADER WRAPPER */
 .header {
@@ -119,6 +15,7 @@
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -140,6 +37,7 @@
 
 .logo-text {
   font-size: 1.3rem;
+  color: white;
 }
 
 /* NAVIGATION MENU */
@@ -154,6 +52,8 @@
   font-weight: 500;
   opacity: 0.85;
   transition: 0.3s ease;
+  text-decoration: none;
+  color: white;
 }
 
 .nav a:hover {
@@ -203,10 +103,7 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* -------------------------------------------- */
 /* RESPONSIVE NAVIGATION */
-/* -------------------------------------------- */
-
 @media (max-width: 900px) {
   .hamburger {
     display: flex;
