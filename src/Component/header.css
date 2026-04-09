@@ -1,132 +1,135 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap");
 
-/* HEADER WRAPPER */
 .header {
   width: 100%;
-  padding: 20px 8%;
+  padding: 18px 7%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(10, 10, 10, 0.7);
-  backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.35s, border-color 0.35s, padding 0.35s;
+  border-bottom: 1px solid transparent;
+}
+
+.header.scrolled {
+  background: rgba(5, 8, 16, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  padding: 13px 7%;
 }
 
 /* LOGO */
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 600;
+  gap: 9px;
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  text-decoration: none;
   cursor: pointer;
 }
-
 .logo-icon {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #00c6ff;
+  font-size: 1.25rem;
+  color: #00d4ff;
 }
-
 .logo-text {
-  font-size: 1.3rem;
-  color: white;
+  font-size: 1.2rem;
+  color: #f0f4ff;
+  letter-spacing: -0.01em;
 }
 
-/* NAVIGATION MENU */
+/* NAV */
 .nav {
   display: flex;
-  gap: 30px;
+  gap: 28px;
   align-items: center;
 }
-
 .nav a {
-  font-size: 1rem;
-  font-weight: 500;
-  opacity: 0.85;
-  transition: 0.3s ease;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.93rem;
+  font-weight: 400;
+  color: rgba(240, 244, 255, 0.65);
   text-decoration: none;
-  color: white;
+  transition: color 0.25s;
+  position: relative;
 }
-
 .nav a:hover {
-  opacity: 1;
-  color: #00c6ff;
+  color: #f0f4ff;
+}
+.nav a.nav-active {
+  color: #00d4ff;
+}
+.nav a.nav-active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #00d4ff;
+  border-radius: 2px;
 }
 
 /* RESUME BUTTON */
 .resume-btn {
-  padding: 8px 18px;
-  border: 1px solid #00c6ff;
-  border-radius: 6px;
-  transition: 0.3s ease;
+  padding: 8px 18px !important;
+  border: 1px solid rgba(0, 212, 255, 0.4) !important;
+  border-radius: 7px !important;
+  color: #00d4ff !important;
+  font-weight: 500 !important;
+  transition: background 0.25s, color 0.25s !important;
 }
-
 .resume-btn:hover {
-  background: #00c6ff;
-  color: #000;
+  background: rgba(0, 212, 255, 0.1) !important;
+  color: #00d4ff !important;
 }
 
-/* HAMBURGER MENU */
+/* HAMBURGER */
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   cursor: pointer;
+  padding: 4px;
 }
-
 .bar {
-  width: 26px;
-  height: 3px;
-  background: white;
-  border-radius: 3px;
-  transition: 0.3s;
+  width: 24px;
+  height: 2px;
+  background: rgba(240, 244, 255, 0.8);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
 }
+.hamburger.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open .bar:nth-child(2) { opacity: 0; }
+.hamburger.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Animation when open */
-.bar.open:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.bar.open:nth-child(2) {
-  opacity: 0;
-}
-
-.bar.open:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* RESPONSIVE NAVIGATION */
+/* MOBILE */
 @media (max-width: 900px) {
   .hamburger {
     display: flex;
   }
-
   .nav {
     position: fixed;
-    top: 70px;
+    top: 62px;
     right: -100%;
     flex-direction: column;
-    background: #111;
-    width: 60%;
-    padding: 30px 20px;
-    gap: 25px;
+    background: rgba(8, 12, 24, 0.97);
+    backdrop-filter: blur(20px);
+    width: 62%;
+    max-width: 300px;
+    padding: 32px 24px;
+    gap: 24px;
     border-left: 1px solid rgba(255, 255, 255, 0.06);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    transition: 0.4s ease;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-
   .nav.active {
     right: 0;
   }
-
   .resume-btn {
     width: 100%;
     text-align: center;
@@ -134,7 +137,5 @@
 }
 
 @media (max-width: 600px) {
-  .nav {
-    width: 70%;
-  }
+  .nav { width: 75%; }
 }
