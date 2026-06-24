@@ -1,42 +1,3 @@
-// import React, { useState } from "react";
-// import "./header.css";
-
-// const Header = () => {
-//   const [menuOpen, setMenuOpen] = useState(false);
-
-//   const toggleMenu = () => setMenuOpen(!menuOpen);
-
-//   return (
-//     <header className="header">
-
-//       <div className="logo">
-//         <span className="logo-icon">&gt;_</span>
-//         <span className="logo-text">israel.dev</span>
-//       </div>
-
-//       <nav className={`nav ${menuOpen ? "active" : ""}`}>
-//         <a href="#about">About</a>
-//         <a href="#skills">Skills</a>
-//         <a href="#projects">Projects</a>
-//         <a href="#contact">Contact</a>
-//         <a href="/resume.pdf" className="resume-btn">Resume</a>
-//       </nav>
-
-     
-//       <div className="hamburger" onClick={toggleMenu}>
-//         <span className={menuOpen ? "bar open" : "bar"}></span>
-//         <span className={menuOpen ? "bar open" : "bar"}></span>
-//         <span className={menuOpen ? "bar open" : "bar"}></span>
-//       </div>
-
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-
-
 import React, { useState, useEffect } from "react";
 import "./header.css";
 
@@ -48,8 +9,8 @@ const NAV_LINKS = [
 ];
 
 const Header = () => {
-  const [menuOpen, setMenuOpen]   = useState(false);
-  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]    = useState(false);
+  const [scrolled, setScrolled]    = useState(false);
   const [activeSection, setActive] = useState("");
 
   useEffect(() => {
@@ -65,11 +26,27 @@ const Header = () => {
         }
       }
     };
+
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const close = () => setMenuOpen(false);
+
+  // Close menu on outside click
+  useEffect(() => {
+    const handleOutside = (e) => {
+      if (
+        menuOpen &&
+        !e.target.closest(".nav") &&
+        !e.target.closest(".hamburger")
+      ) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, [menuOpen]);
 
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
@@ -96,8 +73,11 @@ const Header = () => {
 
       <div
         className={`hamburger ${menuOpen ? "open" : ""}`}
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={() => setMenuOpen((prev) => !prev)}
         aria-label="Toggle menu"
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === "Enter" && setMenuOpen((prev) => !prev)}
       >
         <span className="bar" />
         <span className="bar" />
@@ -108,6 +88,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
-
