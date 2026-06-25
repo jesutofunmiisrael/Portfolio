@@ -11,6 +11,7 @@ import fitgeniepic from "../assets/fitgenie.jpg.jpeg";
 import chatpic from "../assets/chatimg.jpeg";
 import apexchatpic from "../assets/Apex.png";   
 import cardcheckpic from "../assets/card.png"; 
+
 import "./temp.css";
 
 const projects = [
@@ -41,7 +42,7 @@ const projects = [
     alt: "Bank App",
     title: "Banking Platform",
     featured: false,
-    badge: "",
+    badge: "Banking Simulation",
     desc: "Full-stack banking simulation with deposits, withdrawals, and transaction history. JWT-secured routes and clean MVC backend architecture.",
     tags: ["React", "Node.js", "MongoDB", "JWT"],
     live: "https://bank-chi-sandy.vercel.app/",
@@ -52,7 +53,7 @@ const projects = [
     alt: "AI Platform",
     title: "AI Content Studio",
     featured: false,
-    badge: "",
+    badge: "AI Platform",
     desc: "Multi-feature AI platform for image generation, text-to-speech, and video creation using powerful external AI APIs.",
     tags: ["React", "Node.js", "AI APIs"],
     live: "https://ai-vault-frontend-psi.vercel.app/",
@@ -63,7 +64,7 @@ const projects = [
     alt: "FitGenie",
     title: "FitGenie",
     featured: false,
-    badge: "",
+    badge: "fitness App",
     desc: "AI-powered fitness app generating personalised workout and diet plans based on user goals, preferences, and fitness level.",
     tags: ["React", "Node.js", "AI"],
     live: "https://fit-geniee.vercel.app/",
@@ -74,7 +75,7 @@ const projects = [
     alt: "Real-Time Chat",
     title: "Real-Time Chat App",
     featured: false,
-    badge: "",
+    badge: "Messaging App",
     desc: "1-on-1 real-time messaging app with Socket.io, JWT authentication, and live user presence indicators.",
     tags: ["React", "Socket.io", "Node.js", "MongoDB"],
     live: "https://chat-app-beta-jade-21.vercel.app/",
@@ -85,7 +86,7 @@ const projects = [
     alt: "Ecommerce",
     title: "E-Commerce Store",
     featured: false,
-    badge: "",
+    badge: "E-Commerce",
     desc: "Modern online store with product listings, cart functionality, and Firebase authentication.",
     tags: ["JavaScript", "Firebase", "HTML/CSS"],
     live: "https://tofunmi-store.vercel.app/",
@@ -184,7 +185,7 @@ const Dashboard = () => {
               </div>
               <div className="stat-divider" />
               <div className="stat">
-                <span className="stat-num">2+</span>
+                <span className="stat-num">1+</span>
                 <span className="stat-label">Year XP</span>
               </div>
               <div className="stat-divider" />
