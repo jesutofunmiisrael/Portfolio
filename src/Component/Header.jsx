@@ -1,90 +1,73 @@
-import React, { useState, useEffect } from "react";
+
+
+
+
+import React, { useEffect, useState } from "react";
 import "./header.css";
-
 const NAV_LINKS = [
-  { label: "About",    href: "#about" },
-  { label: "Skills",   href: "#skills" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Contact",  href: "#contact" },
+  { label: "Contact", href: "#contact" },
 ];
-
 const Header = () => {
-  const [menuOpen, setMenuOpen]    = useState(false);
-  const [scrolled, setScrolled]    = useState(false);
-  const [activeSection, setActive] = useState("");
-
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const closeMenu = () => setMenuOpen(false);
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
-
+      setScrolled(window.scrollY > 24);
       const sections = ["about", "skills", "projects", "contact"];
       for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && window.scrollY >= el.offsetTop - 160) {
-          setActive(sections[i]);
+        const section = document.getElementById(sections[i]);
+        if (section && window.scrollY >= section.offsetTop - 170) {
+          setActiveSection(sections[i]);
           break;
         }
       }
     };
-
     window.addEventListener("scroll", onScroll);
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const close = () => setMenuOpen(false);
-
-  // Close menu on outside click
   useEffect(() => {
-    const handleOutside = (e) => {
-      if (
-        menuOpen &&
-        !e.target.closest(".nav") &&
-        !e.target.closest(".hamburger")
-      ) {
-        setMenuOpen(false);
-      }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
     };
-    document.addEventListener("mousedown", handleOutside);
-    return () => document.removeEventListener("mousedown", handleOutside);
   }, [menuOpen]);
-
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
-      <a href="#home" className="logo" onClick={close}>
-        <span className="logo-icon">&gt;_</span>
-        <span className="logo-text">israel.dev</span>
+      <a href="#home" className="logo" onClick={closeMenu}>
+        <span className="logo-mark">I</span>
+        <span className="logo-text">Jesutofunmi Israel</span>
       </a>
-
       <nav className={`nav ${menuOpen ? "active" : ""}`}>
-        {NAV_LINKS.map(({ label, href }) => (
+        {NAV_LINKS.map((link) => (
           <a
-            key={label}
-            href={href}
-            className={activeSection === href.slice(1) ? "nav-active" : ""}
-            onClick={close}
+            key={link.label}
+            href={link.href}
+            onClick={closeMenu}
+            className={activeSection === link.href.slice(1) ? "active" : ""}
           >
-            {label}
+            {link.label}
           </a>
         ))}
-        <a href="/resume.pdf" className="resume-btn" onClick={close}>
-          Resume ↓
+        <a href="/resume.pdf" className="resume-link" onClick={closeMenu}>
+          Resume
         </a>
       </nav>
-
-      <div
-        className={`hamburger ${menuOpen ? "open" : ""}`}
+      <button
+        className={`menu-button ${menuOpen ? "open" : ""}`}
         onClick={() => setMenuOpen((prev) => !prev)}
-        aria-label="Toggle menu"
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === "Enter" && setMenuOpen((prev) => !prev)}
+        aria-label="Toggle navigation menu"
+        type="button"
       >
-        <span className="bar" />
-        <span className="bar" />
-        <span className="bar" />
-      </div>
+        <span />
+        <span />
+      </button>
     </header>
   );
 };
-
 export default Header;
